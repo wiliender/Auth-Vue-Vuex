@@ -36,7 +36,10 @@ export default {
     methods: {
         enviarFormulario () {
             axios.post('http://localhost:8000/auth/register', this.usuario)//fazendo um post pra url com esse usuario
-            .then(resposta => console.log(resposta))
+            .then(resposta => {
+                console.log(resposta)
+                this.$router.push({ name: 'login' })
+            })
             .catch(erro => console.log(erro))
         }
     }
