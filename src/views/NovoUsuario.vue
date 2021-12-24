@@ -19,6 +19,9 @@
 </template>
 
 <script>
+
+import axios from 'axios'//é um cliente HTTP baseado em promises para fazer requisições
+
 export default {
 
     data: function () {//data é um objeto que vai ser passado para o componente
@@ -32,7 +35,9 @@ export default {
     },
     methods: {
         enviarFormulario () {
-            console.log(this.usuario);
+            axios.post('http://localhost:8000/auth/register', this.usuario)//fazendo um post pra url com esse usuario
+            .then(resposta => console.log(resposta))
+            .catch(erro => console.log(erro))
         }
     }
 }
